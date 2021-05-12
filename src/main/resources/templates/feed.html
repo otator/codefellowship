@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Feed</title>
+</head>
+<body>
+<div class="posts-container" th:each="post: ${posts}">
+    <div class="post-card" th:if="${post.user.username != loggedUser}">
+        <div class="post-owner">
+            <h3 th:text=${post.user.username}> </h3>
+            <h3> <span th:text=${post.user.firstName}></span> <span th:text=${post.user.lastName}></span> </h3>
+            <img src ="/img/profile_picture.png" class="pro-img">
+        </div>
+        <p th:text=${post.body}></p>
+        <p th:text="${post.createdAt}"></p>
+
+    </div>
+</div>
+</body>
+</html>
