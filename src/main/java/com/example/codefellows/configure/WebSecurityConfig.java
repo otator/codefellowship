@@ -42,10 +42,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/", true)
-                .failureUrl("/login").and().logout();
+                .defaultSuccessUrl("/myprofile", true)
+                .failureUrl("/login").and().logout()
+                .logoutUrl("/perform_logout")
+                .logoutSuccessUrl("/").deleteCookies("JSESSIONID");
 
-//                .and()
-//                .logout();
     }
 }

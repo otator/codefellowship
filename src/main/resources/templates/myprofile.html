@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/style.css">
+  <th:block th:replace="../static/fragments.html :: head"></th:block>
+
+    <title>Profile</title>
+</head>
+
+<body>
+  <th:block th:replace="../static/fragments.html :: header"></th:block>
+
+<div>
+    <div  class="user-profile-card">
+        <img src="/img/profile_picture.png" class="pro-img">
+        <h2>Username: <span th:text=${loggedUser.username}></span></h2>
+        <h3>Name:<span th:text=${loggedUser.firstName}></span> <span th:text=${loggedUser.lastName}></span> </h3>
+        <h4>Born in: <span th:text=${loggedUser.dateOfBirth}></span></h4>
+        <p th:text=${loggedUser.bio}></p>
+    </div>
+
+
+    <div class="posts-container">
+
+        <div class="user-post-card" th:each="post : ${loggedUser.posts}">
+            <p th:text="${post.body}"></p>
+            <p class="time" th:text="${post.createdAt}"></p>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+</body>
+
+</html>

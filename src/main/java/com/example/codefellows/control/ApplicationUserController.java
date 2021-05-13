@@ -37,7 +37,7 @@ public class ApplicationUserController {
     public RedirectView signUpUser(String username, String password, String firstName, String lastName, String dob, String bio){
         ApplicationUser newUser = new ApplicationUser(username, bCryptPasswordEncoder.encode(password), firstName, lastName, dob, bio);
         applicationUserRepository.save(newUser);
-        return new RedirectView("/");
+        return new RedirectView("/login");
     }
 
     @GetMapping("/users/{id}")
@@ -65,13 +65,12 @@ public class ApplicationUserController {
         List<Post> posts = null;
 
         try {
-            System.out.println("inside try");
             user = applicationUserRepository.findByUsername(principal.getName());
         }catch (Exception e){
             model.addAttribute("error", e.getMessage());
         }
-        model.addAttribute("user", user);
-        return "profile.html";
+        model.addAttribute("loggedUser", user);
+        return "myprofile.html";
     }
 
     @GetMapping("/discover")
@@ -89,7 +88,7 @@ public class ApplicationUserController {
         ApplicationUser currentUser = applicationUserRepository.findByUsername(principal.getName());
         List<Post> posts = postRepository.findFollowingPosts(currentUser.getUsername());
 
-        model.addAttribute("loggedUser", currentUser.getUsername());
+        model.addAttribute("loggedUser", currentUser);
         model.addAttribute("posts", posts);
         return "feed.html";
     }

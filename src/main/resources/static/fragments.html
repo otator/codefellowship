@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <th:block th:fragment="head">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/js/app.js"></script>
+
+  </th:block>
+</head>
+
+<body>
+  <th:block th:fragment="header">
+    
+    <nav id="navbar" class="navbar">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a class="nav-link scrollto" href="/addPost">Add Post</a></li>
+        <li th:if="${loggedUser != null}"><a href="/myprofile">My Profile</a>
+        </li>
+        <li th:if="${loggedUser != null}"><a class="nav-link scrollto" href="/discover">Discover</a>
+        </li>
+        <li><a class="nav-link scrollto" href="/feed">Feed</a></li>
+        <li th:if="${loggedUser != null}"><a class="nav-link scrollto" href="/perform_logout">Logout</a>
+        </li>
+        <li th:if="${loggedUser == null}"><a class="nav-link scrollto" href="/signup">SignUp</a></li>
+        <li th:if="${loggedUser == null}"><a class="nav-link scrollto" href="/login">Login</a></li>
+      </ul>
+    </nav>
+    <div class="log-user">
+      <h1 th:if="${loggedUser != null}"> <span th:text="${loggedUser.firstName}"></span> <span th:text="${loggedUser.lastName}"></span></h1>
+    </div>
+
+  </th:block>
+
+</body>
+
+</html>

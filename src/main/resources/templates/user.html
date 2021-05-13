@@ -5,11 +5,15 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <th:block th:replace="../static/fragments.html :: head"></th:block>
+
     <title>User Info</title>
 </head>
 <body>
-    <h1 th:if="${loggedUser != null}"> Hello, <span th:text=${loggedUser.firstName}></span> <span th:text=${loggedUser.lastName}></span></h1>
-    <div>
+  <th:block th:replace="../static/fragments.html :: header"></th:block>
+
+    <!-- <h1 th:if="${loggedUser != null}"> Hello, <span th:text=${loggedUser.firstName}></span> <span th:text=${loggedUser.lastName}></span></h1> -->
+    <div class="user-profile-card">
         <img src="/img/profile_picture.png">
         <h2>Username: <span th:text = ${user.username}></span></h2>
         <h3>Name:<span th:text = ${user.firstName}></span> <span th:text = ${user.lastName}></span> </h3>

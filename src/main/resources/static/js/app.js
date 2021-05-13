@@ -1,5 +1,4 @@
 $(document).ready(function(){
-alert("working");
   function validatePassword(){
     //confirm password
     let password = $('#password').val();
